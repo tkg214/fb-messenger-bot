@@ -67,11 +67,20 @@ def send_postback(recipient_id, button_text):
             "id": recipient_id
         },
         "message": {
-            "buttons": [{
-            "type":"postback",
-            "title":"Bookmark Item",
-            "payload":"DEVELOPER_DEFINED_PAYLOAD"
-            }]
+            "attachment": {
+              "type":"template",
+              "payload":{
+                "template_type":"button",
+                "text":"What do you want to do next?",
+                "buttons": [
+                  {
+                    "type":"postback",
+                    "title":"Bookmark Item",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                  }
+                ]
+              }
+            }
         }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
