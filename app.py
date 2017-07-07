@@ -66,11 +66,13 @@ def send_postback(recipient_id, button_text):
         "recipient": {
             "id": recipient_id
         },
-        "buttons": [{
+        "message": {
+            "buttons": [{
             "type":"postback",
             "title":"Bookmark Item",
             "payload":"DEVELOPER_DEFINED_PAYLOAD"
-        }]
+            }]
+        }
     })
     r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
