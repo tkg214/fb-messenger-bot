@@ -63,7 +63,7 @@ def send_postback(recipient_id, button_text):
         "Content-Type": "application/json"
     }
     data = json.dumps({
-        "recipient_id": {
+        "recipient": {
             "id": recipient_id
         },
         "buttons": [{
